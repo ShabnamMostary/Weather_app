@@ -16,15 +16,17 @@ function addWeatherToPage(data) {
     const temp = KtoF(data.main.temp)
     const weather = document.createElement("div")
     weather.classList.add("weather")
+    main.innerHTML = "";
     weather.innerHTML = `
     <small>There are</small>
     ${temp}°F
     <p> in ${data.name}</p>`;
     main.appendChild(weather);
+    
 }
 
 function KtoF(K){
-    return Math.floor(K-459.67)
+    return Math.floor((K-273.15) * 9/5 + 32 )
 }
 form.addEventListener("submit", (e)=>{
     e.preventDefault()

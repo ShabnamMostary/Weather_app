@@ -8,7 +8,7 @@ const url = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}
 async function getWeatherByLocation(city){
     const response = await fetch (url(city), {origin:"cors"});
     const responseJson = await response.json();
-   // console.log(responseJson)
+    console.log(responseJson)
     addWeatherToPage(responseJson)
 }
 //getWeatherByLocation("Boston")
@@ -18,9 +18,11 @@ function addWeatherToPage(data) {
     weather.classList.add("weather")
     main.innerHTML = "";
     weather.innerHTML = `
-    <small>There are</small>
-    ${temp}°F
-    <p> in ${data.name}</p>`;
+
+    <h2><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /> ${temp}°F<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /></h2>
+    <small>${data.weather[0].description} </small></br>
+    <small>wind ${data.wind.speed} m/s</small>
+        `;
     main.appendChild(weather);
     
 }

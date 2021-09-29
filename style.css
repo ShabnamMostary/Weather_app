@@ -24,10 +24,9 @@ input {
     padding: 1rem;
     min-width: 300px;
 }
-
 input:focus {
     outline: none;
-}
+} 
 
 .weather {
     font-size: 2rem;
